@@ -1,0 +1,34 @@
+{
+  "name": "aba-css",
+  "version": "1.0.0",
+  "description": "A CSS library.",
+  "main": "dist/index.css",
+  "style": "dist/index.css",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "postcss src/index.css -o dist/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iankernohan/aba-css.git"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/iankernohan/aba-css/issues"
+  },
+  "homepage": "https://github.com/iankernohan/aba-css#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.5.4",
+    "cssnano": "^8.0.2",
+    "postcss": "^8.5.25",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
+  }
+}

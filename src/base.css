@@ -1,0 +1,8 @@
+.scene,
+.scene div,
+.scene div::after,
+.scene div::before {
+  position: absolute;
+  content: "";
+  transform-style: preserve-3d;
+}

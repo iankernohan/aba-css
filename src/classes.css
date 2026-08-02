@@ -1,0 +1,60 @@
+.scene {
+  top: 50%;
+  left: 50%;
+  transform: rotateX(65deg) rotateZ(45deg);
+  animation-name: rotate;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.cube {
+  --color: var(--white);
+  top: 50%;
+  left: 50%;
+  width: var(--x);
+  height: var(--y);
+  translate: -50% -50%;
+  background-color: color-mix(in display-p3, var(--color) 50%, #333);
+}
+
+.cube::before {
+  width: var(--x);
+  height: var(--z);
+  background-color: color-mix(in display-p3, var(--color) 70%, #333);
+  transform-origin: top center;
+  rotate: x 90deg;
+}
+
+.cube::after {
+  width: var(--x);
+  height: var(--z);
+  background-color: color-mix(in display-p3, var(--color) 70%, #333);
+  transform-origin: top center;
+  rotate: x 90deg;
+  translate: 0 var(--y);
+}
+
+.cube > div {
+  width: var(--x);
+  height: var(--y);
+  background-color: var(--color);
+  translate: 0 0 var(--z);
+}
+
+.cube > div::before {
+  width: var(--z);
+  height: var(--y);
+  background-color: color-mix(in display-p3, var(--color) 80%, #333);
+  rotate: y 90deg;
+  transform-origin: left center;
+}
+
+.cube > div::after {
+  width: var(--z);
+  height: var(--y);
+  background-color: color-mix(in display-p3, var(--color) 80%, #333);
+  rotate: y 90deg;
+  transform-origin: left center;
+  translate: var(--x);
+}

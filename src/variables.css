@@ -1,0 +1,11 @@
+:root {
+  --white: #fff;
+  --red: #ff5e5b;
+  --orange: #ff945b;
+
+  --color: var(--color, var(--white));
+
+  --x: 4em;
+  --y: 4em;
+  --z: 4em;
+}
