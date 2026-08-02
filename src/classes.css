@@ -2,6 +2,18 @@
   top: 50%;
   left: 50%;
   transform: rotateX(65deg) rotateZ(45deg);
+}
+
+.scene,
+.scene div,
+.scene div::after,
+.scene div::before {
+  position: absolute;
+  content: "";
+  transform-style: preserve-3d;
+}
+
+.rotate {
   animation-name: rotate;
   animation-duration: 8s;
   animation-timing-function: linear;
