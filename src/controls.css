@@ -1,0 +1,62 @@
+#button-zoom-out {
+  position: fixed;
+  left: 11em;
+}
+
+#button-zoom-in {
+  position: fixed;
+  left: 13em;
+}
+
+#zoom-range {
+  position: fixed;
+  left: 8em;
+  top: 3em;
+  z-index: 1000;
+}
+
+#button-right,
+#button-left,
+#button-up,
+#button-down {
+  position: fixed;
+  z-index: 1000;
+}
+
+#button-right {
+  margin-top: 2em;
+  margin-left: 3em;
+}
+
+#button-left {
+  margin-top: 2em;
+}
+
+#button-down {
+  margin-top: 4em;
+  margin-left: 1em;
+}
+
+#button-up {
+  margin-left: 1.6em;
+}
+
+#x-display {
+  position: fixed;
+  right: 6em;
+  top: 1em;
+  font-family: "Arial";
+  font-size: 20px;
+  color: var(--white);
+  z-index: 1000;
+}
+
+#z-display {
+  position: fixed;
+  right: 1em;
+  top: 1em;
+  font-family: "Arial";
+  font-size: 20px;
+  color: var(--white);
+  z-index: 1000;
+}

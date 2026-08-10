@@ -2,3 +2,8 @@
 @import "./base.css";
 @import "./animations.css";
 @import "./classes.css";
+@import "./controls.css";
+
+body {
+  background-color: #333;
+}
