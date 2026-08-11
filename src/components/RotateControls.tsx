@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 
-let initialZ = 45;
-let initialX = 65;
+const initialZ = 45;
+const initialX = 65;
 const fireRate = 100;
 const turnAmount = 5;
 
@@ -76,7 +76,7 @@ export default function RotateControls() {
     });
   }, []);
 
-  const turnup = useCallback(() => {
+  const turnUp = useCallback(() => {
     setCurrentX((prev) => {
       const updated = prev + turnAmount;
       localStorage.setItem("currentX", String(updated));
@@ -86,7 +86,7 @@ export default function RotateControls() {
     });
   }, []);
 
-  const turndown = useCallback(() => {
+  const turnDown = useCallback(() => {
     setCurrentX((prev) => {
       const updated = prev - turnAmount;
       localStorage.setItem("currentX", String(updated));
@@ -102,6 +102,27 @@ export default function RotateControls() {
       intervalIdRef.current = undefined;
     }
   }
+
+  useEffect(() => {
+    function handleRotateKeyControls(event: KeyboardEvent) {
+      switch (event.key) {
+        case "ArrowRight":
+          return turnRight();
+        case "ArrowDown":
+          return turnDown();
+        case "ArrowLeft":
+          return turnLeft();
+        case "ArrowUp":
+          return turnUp();
+      }
+    }
+
+    window.addEventListener("keydown", handleRotateKeyControls);
+
+    return () => {
+      window.removeEventListener("keydown", handleRotateKeyControls);
+    };
+  }, [turnRight, turnDown, turnLeft, turnUp]);
 
   return (
     <>
@@ -153,16 +174,16 @@ export default function RotateControls() {
         id="button-up"
         onMouseDown={() => {
           if (intervalIdRef.current) return;
-          turnup();
+          turnUp();
           intervalIdRef.current = window.setInterval(() => {
-            turnup();
+            turnUp();
           }, fireRate);
         }}
         onTouchStart={() => {
           if (intervalIdRef.current) return;
-          turnup();
+          turnUp();
           intervalIdRef.current = window.setInterval(() => {
-            turnup();
+            turnUp();
           }, fireRate);
         }}
         onMouseUp={stopTurning}
@@ -175,16 +196,16 @@ export default function RotateControls() {
         id="button-down"
         onMouseDown={() => {
           if (intervalIdRef.current) return;
-          turndown();
+          turnDown();
           intervalIdRef.current = window.setInterval(() => {
-            turndown();
+            turnDown();
           }, fireRate);
         }}
         onTouchStart={() => {
           if (intervalIdRef.current) return;
-          turndown();
+          turnDown();
           intervalIdRef.current = window.setInterval(() => {
-            turndown();
+            turnDown();
           }, fireRate);
         }}
         onMouseUp={stopTurning}
