@@ -20,19 +20,19 @@ export function ZoomControls({ min = 2, max = 40 }: ZoomControlsProps) {
     document.body.style.fontSize = `${zoomAmount}px`;
   }, [zoomAmount]);
 
-  function handleZoomIn() {
+  const handleZoomIn = React.useCallback(() => {
     const updated = zoomAmount + CHANGE_AMOUNT;
     document.body.style.fontSize = `${updated}px`;
     localStorage.setItem("currentFontSize", String(updated));
     setZoomAmount(updated);
-  }
+  }, [zoomAmount]);
 
-  function handleZoomOut() {
+  const handleZoomOut = React.useCallback(() => {
     const updated = zoomAmount - CHANGE_AMOUNT;
     document.body.style.fontSize = `${updated}px`;
     localStorage.setItem("currentFontSize", String(updated));
     setZoomAmount(updated);
-  }
+  }, [zoomAmount]);
 
   function handleInput(event: React.InputEvent<HTMLInputElement>) {
     const value = event.currentTarget.value;
@@ -40,6 +40,24 @@ export function ZoomControls({ min = 2, max = 40 }: ZoomControlsProps) {
     localStorage.setItem("currentFontSize", value);
     setZoomAmount(parseInt(event.currentTarget.value));
   }
+
+  React.useEffect(() => {
+    function handleZoomKeyControls(event: KeyboardEvent) {
+      console.log(event.key);
+      switch (event.key) {
+        case ".":
+          return handleZoomIn();
+        case ",":
+          return handleZoomOut();
+      }
+    }
+
+    window.addEventListener("keydown", handleZoomKeyControls);
+
+    return () => {
+      window.removeEventListener("keydown", handleZoomKeyControls);
+    };
+  }, [handleZoomIn, handleZoomOut]);
 
   return (
     <>
